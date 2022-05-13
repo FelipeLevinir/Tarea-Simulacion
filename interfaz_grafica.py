@@ -14,49 +14,49 @@ class Ventana:
         #self.boton_congruencial=tkinter.Button(self.ventana, text="Genereacion de \nnumeros", width=30, height=2, font=("Times",12), command=lambda:self.click(0))
         #self.boton_congruencial.grid(row=0,column=0)
 
-        self.boton_exponencial=tkinter.Button(self.ventana, text="Distribucion \nExponencial", width=30, height=2, font=("Times",12), command=lambda:self.click(1))
+        self.boton_exponencial=tkinter.Button(self.ventana, text="Distribución \nExponencial", width=30, height=2, font=("Times",12), command=lambda:self.click(1))
         self.boton_exponencial.grid(row=0,column=1)
 
-        self.boton_erlang=tkinter.Button(self.ventana, text="Distribucion \nErlang", width=30, height=2, font=("Times",12), command=lambda:self.click(2))
+        self.boton_erlang=tkinter.Button(self.ventana, text="Distribución \nErlang", width=30, height=2, font=("Times",12), command=lambda:self.click(2))
         self.boton_erlang.grid(row=0,column=2)
 
-        self.boton_normal_01=tkinter.Button(self.ventana, text="Distribucion \nNormal(0,1)", width=30, height=2, font=("Times",12), command=lambda:self.click(3))
+        self.boton_normal_01=tkinter.Button(self.ventana, text="Distribución \nNormal(0,1)", width=30, height=2, font=("Times",12), command=lambda:self.click(3))
         self.boton_normal_01.grid(row=0,column=3)
 
-        self.boton_normal=tkinter.Button(self.ventana, text="Distribucion de \nNormal", width=30, height=2, font=("Times",12), command=lambda:self.click(4))
+        self.boton_normal=tkinter.Button(self.ventana, text="Distribución de \nNormal", width=30, height=2, font=("Times",12), command=lambda:self.click(4))
         self.boton_normal.grid(row=1,column=0)
 
-        self.boton_uniforme_continua=tkinter.Button(self.ventana, text="Distribucion de \nUniforme Continua", width=30, height=2, font=("Times",12), command=lambda:self.click(5))
+        self.boton_uniforme_continua=tkinter.Button(self.ventana, text="Distribución de \nUniforme Continua", width=30, height=2, font=("Times",12), command=lambda:self.click(5))
         self.boton_uniforme_continua.grid(row=1,column=1)
 
-        self.boton_chi_cuadrado=tkinter.Button(self.ventana, text="Distribucion \nChi-Cuadrado", width=30, height=2, font=("Times",12), command=lambda:self.click(6))
+        self.boton_chi_cuadrado=tkinter.Button(self.ventana, text="Distribución \nChi-Cuadrado", width=30, height=2, font=("Times",12), command=lambda:self.click(6))
         self.boton_chi_cuadrado.grid(row=1,column=2)
 
-        self.boton_t_student=tkinter.Button(self.ventana, text="Distribucion \nT-Student", width=30, height=2, font=("Times",12), command=lambda:self.click(7))
+        self.boton_t_student=tkinter.Button(self.ventana, text="Distribución \nT-Student", width=30, height=2, font=("Times",12), command=lambda:self.click(7))
         self.boton_t_student.grid(row=1,column=3)
 
-        self.boton_pareto=tkinter.Button(self.ventana, text="Distribucion \nPareto", width=30, height=2, font=("Times",12), command=lambda:self.click(8))
+        self.boton_pareto=tkinter.Button(self.ventana, text="Distribución \nPareto", width=30, height=2, font=("Times",12), command=lambda:self.click(8))
         self.boton_pareto.grid(row=2,column=0)
 
-        self.boton_weibull=tkinter.Button(self.ventana, text="Distribucion \nWeibull", width=30, height=2, font=("Times",12), command=lambda:self.click(9))
+        self.boton_weibull=tkinter.Button(self.ventana, text="Distribución \nWeibull", width=30, height=2, font=("Times",12), command=lambda:self.click(9))
         self.boton_weibull.grid(row=2,column=1)
 
-        self.boton_triangular=tkinter.Button(self.ventana, text="Distribucion \nTriangular", width=30, height=2, font=("Times",12), command=lambda:self.click(10))
+        self.boton_triangular=tkinter.Button(self.ventana, text="Distribución \nTriangular", width=30, height=2, font=("Times",12), command=lambda:self.click(10))
         self.boton_triangular.grid(row=2,column=2)
 
-        self.boton_uniforme_discreta=tkinter.Button(self.ventana, text="Distribucion de \nUniforme Discreta", width=30, height=2, font=("Times",12), command=lambda:self.click(11))
+        self.boton_uniforme_discreta=tkinter.Button(self.ventana, text="Distribución de \nUniforme Discreta", width=30, height=2, font=("Times",12), command=lambda:self.click(11))
         self.boton_uniforme_discreta.grid(row=2,column=3)
 
-        self.boton_benoulli=tkinter.Button(self.ventana, text="Distribucion \nBenoulli", width=30, height=2, font=("Times",12), command=lambda:self.click(12))
+        self.boton_benoulli=tkinter.Button(self.ventana, text="Distribución \nBenoulli", width=30, height=2, font=("Times",12), command=lambda:self.click(12))
         self.boton_benoulli.grid(row=3,column=0)
 
-        self.boton_poisson=tkinter.Button(self.ventana, text="Distribucion \nPoisson", width=30, height=2, font=("Times",12), command=lambda:self.click(13))
+        self.boton_poisson=tkinter.Button(self.ventana, text="Distribución \nPoisson", width=30, height=2, font=("Times",12), command=lambda:self.click(13))
         self.boton_poisson.grid(row=3,column=1)
 
-        self.boton_binomial=tkinter.Button(self.ventana, text="Distribucion \nBinomial", width=30, height=2, font=("Times",12), command=lambda:self.click(14))
+        self.boton_binomial=tkinter.Button(self.ventana, text="Distribución \nBinomial", width=30, height=2, font=("Times",12), command=lambda:self.click(14))
         self.boton_binomial.grid(row=3,column=2)
 
-        self.boton_geometrica=tkinter.Button(self.ventana, text="Distribucion \nGeometrica", width=30, height=2, font=("Times",12), command=lambda:self.click(15))
+        self.boton_geometrica=tkinter.Button(self.ventana, text="Distribución \nGeometrica", width=30, height=2, font=("Times",12), command=lambda:self.click(15))
         self.boton_geometrica.grid(row=3,column=3)
 
     def click(self,opcion):
@@ -170,8 +170,8 @@ class Ventana_Exponencial:
         self.ventana=ventana
         #ventana.geometry("500x500")
         self.ventana.title("Genereacion de numeros")
-        self.label=tkinter.Label(ventana, text="Parametros Distribucion \nExponencial", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
-        self.label.grid(row=0, column=2, columnspan=4)
+        self.label=tkinter.Label(ventana, text="Parametros Distribución \nExponencial", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
+        self.label.grid(row=0, column=0, columnspan=4)
 
 #############################################################################################################
 
@@ -234,10 +234,81 @@ class Ventana_Exponencial:
 class Ventana_Erlang:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
-        self.label=tkinter.Label(ventana, text="Parametros Distribucion \nErlang", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
+        self.label=tkinter.Label(ventana, text="Parametros Distribución \nErlang", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
+
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.k_label=tkinter.Label(self.frame, text="Constante (k): ", state="disabled", font=("Times",14))
+        self.k_label.grid(row=0, column=0)
+        self.k_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.k_input.grid(row=0, column=1)        
+
+        self.lamda_label=tkinter.Label(self.frame, text="Lamda: ", state="disabled", font=("Times",14))
+        self.lamda_label.grid(row=1, column=0)
+        self.lamda_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.lamda_input.grid(row=1, column=1)    
+
+        self.reep_label=tkinter.Label(self.frame, text="Repeticiones: ", state="disabled", font=("Times",14))
+        self.reep_label.grid(row=2, column=0)
+        self.reep_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.reep_input.grid(row=2, column=1)
+
+#############################################################################################################
+
+        self.generar_erlang=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_erlang.grid(row=5,column=1,columnspan=2)
+
+        self.label_generar_erlang=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_generar_erlang.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+        if(opc==1):
+            earlang = congruncial_distribuciones.erlang(int(self.k_input.get()),int(self.lamda_input.get()),int(self.reep_input.get()),int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            #Graficar!
+            self.label_generar_erlang.configure(text="Numero generado:"+str(earlang))
+
+##############################################################################################################  
 
 class Ventana_Normal_01:
     def __init__(self, ventana):
