@@ -313,107 +313,852 @@ class Ventana_Erlang:
 class Ventana_Normal_01:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nNormal(0,1)", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+
+##############################################################################################################  
+
 class Ventana_Normal:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nNormal", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+
+##############################################################################################################  
+
 class Ventana_Uniforme_Continua:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nUniforme Continua", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+
+##############################################################################################################  
 
 class Ventana_Chi_Cuadrado:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nChi-Cuadrado", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+
+##############################################################################################################          
+
 class Ventana_T_Studet:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nT-Student", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+
+##############################################################################################################  
+
 class Ventana_Pareto:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nPareto", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Weibull:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nWeibull", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Triangular:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nTriangular", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Uniforme_Discreta:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nUniforme Discreta", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Bernoulli:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nBernoulli", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Poisson:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nPoisson", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Binominal:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nBinominal", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
 
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
+
 class Ventana_Geometrica:
     def __init__(self, ventana):
         self.ventana=ventana
-        ventana.geometry("600x500")
+        #ventana.geometry("600x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nGeometrica", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
+
+#############################################################################################################
+
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=2, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_label=tkinter.Label(self.frame, text="Seed: ", state="disabled", font=("Times",14))
+        self.seed_label.grid(row=0, column=0)
+        self.seed_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_input.grid(row=0, column=1)        
+
+        self.const_label=tkinter.Label(self.frame, text="Constante: ", state="disabled", font=("Times",14))
+        self.const_label.grid(row=1, column=0)
+        self.const_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.const_input.grid(row=1, column=1)    
+
+        self.mod_label=tkinter.Label(self.frame, text="Modulo: ", state="disabled", font=("Times",14))
+        self.mod_label.grid(row=2, column=0)
+        self.mod_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.mod_input.grid(row=2, column=1)  
+
+#############################################################################################################
+
+        self.generar_numero=tkinter.Button(self.ventana, text="Generar Número", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(0))
+        self.generar_numero.grid(row=3,column=1,columnspan=2)
+
+        self.label_numero_generado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_numero_generado.grid(row=3, column=4,columnspan=2)
+
+#############################################################################################################
+        #Ajustar nombres de las variables correspondiente a cada distribucion
+        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        margen=10
+        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+
+        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.seed_labelx.grid(row=0, column=0)
+        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputx.grid(row=0, column=1)        
+
+        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
+        self.seed_labely.grid(row=1, column=0)
+        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputy.grid(row=1, column=1)    
+
+        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
+        self.seed_labelz.grid(row=2, column=0)
+        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.seed_inputz.grid(row=2, column=1)
+
+    def click(self,opc):
+        if(opc==0):
+            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Numero generado:"+str(num))
+
+##############################################################################################################  
 
 tarea=Ventana(ventana)
 ventana.mainloop()
