@@ -307,6 +307,7 @@ class Ventana_Erlang:
             earlang = congruncial_distribuciones.erlang(int(self.k_input.get()),int(self.lamda_input.get()),int(self.reep_input.get()),int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
             #Graficar!
             self.label_generar_erlang.configure(text="Numero generado:"+str(earlang))
+            print(str(earlang))
 
 ##############################################################################################################  
 
