@@ -551,29 +551,38 @@ class Ventana_Chi_Cuadrado:
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+        
+        self.k_label=tkinter.Label(self.frame, text="Constante (k): ", state="disabled", font=("Times",14))
+        self.k_label.grid(row=0, column=0)
+        self.k_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.k_input.grid(row=0, column=1)        
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.reep_label=tkinter.Label(self.frame, text="Repeticiones: ", state="disabled", font=("Times",14))
+        self.reep_label.grid(row=2, column=0)
+        self.reep_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.reep_input.grid(row=2, column=1)
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+#############################################################################################################
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
+        self.generar_chi_cuadrado=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_chi_cuadrado.grid(row=5,column=1,columnspan=2)
+
+        self.label_chi_cuadrado=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_chi_cuadrado.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
 
     def click(self,opc):
         if(opc==0):
             num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
             self.label_numero_generado.configure(text="Numero generado:"+str(num))
+        if(opc==1):
+            chi_cuadrado = congruncial_distribuciones.chi_cuadrado(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()),int(self.reep_input.get()),int(self.k_input.get()))
+            #Graficar!
+            self.label_chi_cuadrado.configure(text="Numero generado:"+str(chi_cuadrado))
+            print(str(chi_cuadrado))
 
-
-##############################################################################################################          
+##############################################################################################################         
 
 class Ventana_T_Studet:
     def __init__(self, ventana):
