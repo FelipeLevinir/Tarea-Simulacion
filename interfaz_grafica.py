@@ -203,7 +203,7 @@ class Ventana_Exponencial:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
+        
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
@@ -226,7 +226,7 @@ class Ventana_Exponencial:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -312,7 +312,7 @@ class Ventana_Erlang:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -394,7 +394,7 @@ class Ventana_Normal_01:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -480,7 +480,7 @@ class Ventana_Normal:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -564,7 +564,7 @@ class Ventana_Uniforme_Continua:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -649,7 +649,7 @@ class Ventana_Chi_Cuadrado:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -731,7 +731,7 @@ class Ventana_T_Studet:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -815,7 +815,7 @@ class Ventana_Pareto:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -902,7 +902,7 @@ class Ventana_Weibull:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -990,7 +990,7 @@ class Ventana_Triangular:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo_Entero(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -1055,26 +1055,46 @@ class Ventana_Uniforme_Discreta:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.a_label=tkinter.Label(self.frame, text="A: ", state="disabled", font=("Times",14))
+        self.a_label.grid(row=0, column=0)
+        self.a_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.a_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.b_label=tkinter.Label(self.frame, text="B: ", state="disabled", font=("Times",14))
+        self.b_label.grid(row=1, column=0)
+        self.b_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.b_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_uni_discreta=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_uni_discreta.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_va_discreta=clases_distribuciones.VA_discreta(int(self.a_input.get()),int(self.b_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_va_discreta.discreta()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Uniforme Discreta')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+            #print(num.generar_numero())
+
 ##############################################################################################################  
 
 class Ventana_Bernoulli:
@@ -1140,7 +1160,7 @@ class Ventana_Bernoulli:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             var_bernoulli=clases_distribuciones.Bernoulli(int(self.repeticiones_input.get()),float(self.p_input.get()),self.num)
@@ -1219,7 +1239,7 @@ class Ventana_Poisson:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo_Entero(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -1304,7 +1324,7 @@ class Ventana_Binominal:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()
@@ -1371,7 +1391,7 @@ class Ventana_Geometrica:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.p_label=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.p_label=tkinter.Label(self.frame, text="P: ", state="disabled", font=("Times",14))
         self.p_label.grid(row=0, column=0)
         self.p_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
         self.p_input.grid(row=0, column=1)        
@@ -1386,7 +1406,7 @@ class Ventana_Geometrica:
     def click(self,opc):
         if(opc==0):
             self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+            #self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
         
         if(opc==1):        
             lista_x=list()

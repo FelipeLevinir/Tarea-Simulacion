@@ -82,13 +82,13 @@ class Erlang:
         return [total_erlang,x]
 
 class Exponencial:
-    def __init__(self,gama,x):
+    def __init__(self,l,x):
+        self.l=l
         self.x=x
-        self.gama=gama
     def exponencial(self):
         x=self.x.generar_numero()
-        calculo=(1/self.gama)*(e**(-x/self.gama))
-        return [calculo,x]
+        total_exponencial = self.l*e**-(self.l*x)
+        return [total_exponencial,x]
 
 class Bernoulli:
     def __init__(self,rep,p,x):
@@ -196,17 +196,17 @@ class Weibull:
         total_weibull=calculo1*calculo2
         return [total_weibull,x]
 
-class Weibull:
-    def __init__(self,a,l,x):
-        self.a=a
-        self.l=l
-        self.x=x
-    def weibull(self):
-        x=self.x.generar_numero()
-        calculo1=self.l*self.a*(self.l*x)**(self.a-1)
-        calculo2=e**-(self.l*x)**self.a
-        total_weibull=calculo1*calculo2
-        return [total_weibull,x]
+#class Weibull:
+#    def __init__(self,a,l,x):
+#        self.a=a
+#        self.l=l
+#        self.x=x
+#    def weibull(self):
+#        x=self.x.generar_numero()
+#        calculo1=self.l*self.a*(self.l*x)**(self.a-1)
+#        calculo2=e**-(self.l*x)**self.a
+#        total_weibull=calculo1*calculo2
+#        return [total_weibull,x]
 
 
 class Triangular:
@@ -234,3 +234,13 @@ class Triangular:
         elif(self.b < x):
             total_triangular = 0
         return [total_triangular,x]
+
+class VA_discreta:
+    def __init__(self,a,b,x):
+        self.a=a
+        self.b=b
+        self.x=x
+    def discreta(self):
+        x=self.x.generar_numero()
+        total_discreta = 1 / (self.b-self.a)
+        return [total_discreta,x]
