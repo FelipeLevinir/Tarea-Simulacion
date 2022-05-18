@@ -47,7 +47,7 @@ class Ventana:
         self.boton_uniforme_discreta=tkinter.Button(self.ventana, text="Distribución de \nUniforme Discreta", width=30, height=2, font=("Times",12), command=lambda:self.click(11))
         self.boton_uniforme_discreta.grid(row=2,column=3)
 
-        self.boton_benoulli=tkinter.Button(self.ventana, text="Distribución \nBenoulli", width=30, height=2, font=("Times",12), command=lambda:self.click(12))
+        self.boton_benoulli=tkinter.Button(self.ventana, text="Distribución \nBernoulli", width=30, height=2, font=("Times",12), command=lambda:self.click(12))
         self.boton_benoulli.grid(row=3,column=0)
 
         self.boton_poisson=tkinter.Button(self.ventana, text="Distribución \nPoisson", width=30, height=2, font=("Times",12), command=lambda:self.click(13))
@@ -371,31 +371,47 @@ class Ventana_Normal_01:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
-        self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
-        margen=10
-        self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
+    
+        #self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
+        #margen=10
+        #self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        #self.gamma_label=tkinter.Label(self.frame, text="Gamma: ", state="disabled", font=("Times",14))
+        #self.gamma_label.grid(row=0, column=0)
+        #self.gamma_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        #self.gamma_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+#############################################################################################################
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+        self.generar_erlang=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_erlang.grid(row=5,column=1,columnspan=2)
+
+        self.label_generar_erlang=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_generar_erlang.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
+
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_normal_01=clases_distribuciones.Normal_01(self.num)
+
+            for i in range(1000):  
+                var=var_normal_01.normal_01()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Normal(0,1)')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
 
 ##############################################################################################################  
 
@@ -442,28 +458,46 @@ class Ventana_Normal:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.o_label=tkinter.Label(self.frame, text="Desviación estandar: ", state="disabled", font=("Times",14))
+        self.o_label.grid(row=0, column=0)
+        self.o_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.o_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.u_label=tkinter.Label(self.frame, text="Media aritmetica: ", state="disabled", font=("Times",14))
+        self.u_label.grid(row=1, column=0)
+        self.u_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.u_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_normal=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_normal.grid(row=5,column=1,columnspan=2)
+
+        self.label_normal=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_normal.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
 
-##############################################################################################################  
+            var_normal=clases_distribuciones.Normal(int(self.o_input.get()),int(self.u_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_normal.normal()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Normal')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
 
 class Ventana_Uniforme_Continua:
     def __init__(self, ventana):
@@ -503,33 +537,52 @@ class Ventana_Uniforme_Continua:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
+        
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.lim_max_label=tkinter.Label(self.frame, text="Limite Maximo: ", state="disabled", font=("Times",14))
+        self.lim_max_label.grid(row=0, column=0)
+        self.lim_max_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.lim_max_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.lim_min_label=tkinter.Label(self.frame, text="Limite Minimo: ", state="disabled", font=("Times",14))
+        self.lim_min_label.grid(row=1, column=0)
+        self.lim_min_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.lim_min_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_uniforme_continua=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_uniforme_continua.grid(row=5,column=1,columnspan=2)
+
+        self.label_uniforme_continua=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_uniforme_continua.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
 
-##############################################################################################################  
+            var_uniforme_continua=clases_distribuciones.UniCont(int(self.lim_max_input.get()),int(self.lim_min_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_uniforme_continua.unicont()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Uniforme Continua')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+##############################################################################################################   
 
 class Ventana_Chi_Cuadrado:
     def __init__(self, ventana):
@@ -787,7 +840,7 @@ class Ventana_Pareto:
 class Ventana_Weibull:
     def __init__(self, ventana):
         self.ventana=ventana
-        #ventana.geometry("600x500")
+        #ventana.geometry("800x500")
         self.ventana.title("Genereacion de numeros")
         self.label=tkinter.Label(ventana, text="Parametros Distribucion \nWeibull", state="disabled", width=30, height=2, foreground="black", font=("Times",20), anchor="center")
         self.label.grid(row=0, column=0, columnspan=4)
@@ -822,32 +875,52 @@ class Ventana_Weibull:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
+        
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.a_label=tkinter.Label(self.frame, text="Alfa: ", state="disabled", font=("Times",14))
+        self.a_label.grid(row=0, column=0)
+        self.a_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.a_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.l_label=tkinter.Label(self.frame, text="Lamda: ", state="disabled", font=("Times",14))
+        self.l_label.grid(row=1, column=0)
+        self.l_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.l_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_weibull=tkinter.Button(self.ventana, text="Generar", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_weibull.grid(row=5,column=1,columnspan=2)
+
+        self.label_weibull=tkinter.Label(ventana, text="", state="disabled", width=30, height=2, foreground="black", font=("Times",16), anchor="w")
+        self.label_weibull.grid(row=5, column=4,columnspan=4)
+
+#############################################################################################################
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
-##############################################################################################################  
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_weibull=clases_distribuciones.Weibull(int(self.a_input.get()),int(self.l_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_weibull.weibull()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Weibull')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+##############################################################################################################   
 
 class Ventana_Triangular:
     def __init__(self, ventana):
@@ -892,26 +965,51 @@ class Ventana_Triangular:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.a_label=tkinter.Label(self.frame, text="A: ", state="disabled", font=("Times",14))
+        self.a_label.grid(row=0, column=0)
+        self.a_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.a_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.b_label=tkinter.Label(self.frame, text="B: ", state="disabled", font=("Times",14))
+        self.b_label.grid(row=1, column=0)
+        self.b_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.b_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+        self.c_label=tkinter.Label(self.frame, text="C: ", state="disabled", font=("Times",14))
+        self.c_label.grid(row=2, column=0)
+        self.c_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.c_input.grid(row=2, column=1)
+
+#############################################################################################################
+
+        self.generar_triangular=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_triangular.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo_Entero(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_triangular=clases_distribuciones.Triangular(int(self.a_input.get()),int(self.b_input.get()),int(self.c_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_triangular.triangular()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Triangular')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+            #print(num.generar_numero())
+
 ##############################################################################################################  
 
 class Ventana_Uniforme_Discreta:
@@ -1022,26 +1120,45 @@ class Ventana_Bernoulli:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.repeticiones_label=tkinter.Label(self.frame, text="Repeticiones: ", state="disabled", font=("Times",14))
+        self.repeticiones_label.grid(row=0, column=0)
+        self.repeticiones_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.repeticiones_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.p_label=tkinter.Label(self.frame, text="P: ", state="disabled", font=("Times",14))
+        self.p_label.grid(row=1, column=0)
+        self.p_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.p_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_pareto=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_pareto.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            var_bernoulli=clases_distribuciones.Bernoulli(int(self.repeticiones_input.get()),float(self.p_input.get()),self.num)
+            var=var_bernoulli.bernoulli()
+            #print(var)
+            x=0
+            y=0
+            for i in var:
+                if(i==1):
+                    x=x+1
+                if(i==0):
+                    y=y+1
+            plt.title('Distribución Bernoulli')        
+            plt.bar(range(2), [x,y], edgecolor='black')
+            plt.xticks(range(2), [0,1])
+            plt.ylim(min(x,y)-1, max(x,y)+1)
+            plt.show()
+
 ##############################################################################################################  
 
 class Ventana_Poisson:
@@ -1082,31 +1199,46 @@ class Ventana_Poisson:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
+     
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.lamda_label=tkinter.Label(self.frame, text="Lamda: ", state="disabled", font=("Times",14))
+        self.lamda_label.grid(row=0, column=0)
+        self.lamda_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.lamda_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+#############################################################################################################
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+        self.generar_poisson=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_poisson.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo_Entero(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_poisson=clases_distribuciones.Poisson(int(self.lamda_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_poisson.poisson()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Poisson')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+            #print(num.generar_numero())
+
 ##############################################################################################################  
 
 class Ventana_Binominal:
@@ -1147,31 +1279,53 @@ class Ventana_Binominal:
         self.label_numero_generado.grid(row=3, column=4,columnspan=2)
 
 #############################################################################################################
-        #Ajustar nombres de las variables correspondiente a cada distribucion
+        
         self.frame=tkinter.Frame(ventana,borderwidth=5, relief="sunken")
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.reep_label=tkinter.Label(self.frame, text="Repeticiones: ", state="disabled", font=("Times",14))
+        self.reep_label.grid(row=0, column=0)
+        self.reep_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.reep_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+        self.p_label=tkinter.Label(self.frame, text="P: ", state="disabled", font=("Times",14))
+        self.p_label.grid(row=1, column=0)
+        self.p_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.p_input.grid(row=1, column=1)    
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+#############################################################################################################
+
+        self.generar_poisson=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_poisson.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_binomial=clases_distribuciones.Binomial(int(self.reep_input.get()),float(self.p_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_binomial.binomial()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            #plt.scatter(,)
+            plt.plot(lista_x, lista_y, '--')
+            plt.vlines(lista_x, 0, lista_y, colors='b', lw=5, alpha=0.5)
+            plt.title('Distribución Binomial')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+            #print(num.generar_numero())
+
 ##############################################################################################################  
 
 class Ventana_Geometrica:
@@ -1217,27 +1371,42 @@ class Ventana_Geometrica:
         margen=10
         self.frame.grid(row=4, column=0, columnspan=11, ipadx=margen, ipady=margen, padx=margen, pady=margen)
 
-        self.seed_labelx=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
-        self.seed_labelx.grid(row=0, column=0)
-        self.seed_inputx=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputx.grid(row=0, column=1)        
+        self.p_label=tkinter.Label(self.frame, text="Parametro 1: ", state="disabled", font=("Times",14))
+        self.p_label.grid(row=0, column=0)
+        self.p_input=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
+        self.p_input.grid(row=0, column=1)        
 
-        self.seed_labely=tkinter.Label(self.frame, text="Parametro 2: ", state="disabled", font=("Times",14))
-        self.seed_labely.grid(row=1, column=0)
-        self.seed_inputy=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputy.grid(row=1, column=1)    
+#############################################################################################################
 
-        self.seed_labelz=tkinter.Label(self.frame, text="Parametro 3: ", state="disabled", font=("Times",14))
-        self.seed_labelz.grid(row=2, column=0)
-        self.seed_inputz=tkinter.Spinbox(self.frame, from_=0 , to=999, increment=1)
-        self.seed_inputz.grid(row=2, column=1)
-'''
+        self.generar_geometrica=tkinter.Button(self.ventana, text="Generar Grafica", width=22, height=2, anchor="center", font=("Times",9), command=lambda:self.click(1))
+        self.generar_geometrica.grid(row=5,column=2,columnspan=2)
+
+#############################################################################################################
+    
     def click(self,opc):
         if(opc==0):
-            num = congruncial_distribuciones.congruncial_multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
-            self.label_numero_generado.configure(text="Numero generado:"+str(num))
-'''
-##############################################################################################################  
+            self.num = clases_distribuciones.Congruencial_Multiplicativo(int(self.seed_input.get()),int(self.const_input.get()),int(self.mod_input.get()))
+            self.label_numero_generado.configure(text="Generador de números creado con la semilla: "+str(self.seed_input.get()))
+        
+        if(opc==1):        
+            lista_x=list()
+            lista_y=list()
+
+            var_geometrica=clases_distribuciones.Geometrica(float(self.p_input.get()),self.num)
+
+            for i in range(1000):  
+                var=var_geometrica.geometrica()
+                lista_x.append(var[1])
+                lista_y.append(var[0])
+
+            plt.scatter(lista_x,lista_y)
+            plt.title('Distribución Geometrica')
+            plt.ylabel('probabilidad')
+            plt.xlabel('valores')
+            plt.show()
+            #print(num.generar_numero())
+
+##############################################################################################################   
 
 tarea=Ventana(ventana)
 ventana.mainloop()
